@@ -25,7 +25,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     
     //チャット画面への遷移メソッド
     func transitionToChatRoom() {
-        performSegue(withIdentifier: "toChatRoom", sender: self)//"toChatRoom"というIDで識別
+        performSegue(withIdentifier: "toChat", sender: self)//"toChatRoom"というIDで識別
     }
     
     //Googleサインインに関するデリゲートメソッド
@@ -54,5 +54,16 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     
     /*** ここまで追加！ ***/
+    //サインアウトボタンを押したときの処理
+    @IBAction func tappedSignOut(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("SignOut is succeeded")
+            reloadInputViews()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
 }
 

@@ -10,6 +10,6 @@ pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
-
+pod 'MessageKit','~>2.0'
 
 end
